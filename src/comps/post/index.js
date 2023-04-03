@@ -106,11 +106,16 @@ export default function Post({ post, user, profile }) {
                         </div>
                     </div>
                 </Link>
-                <div
-                    className="post_header_right hover1"
-                    onClick={() => setShowMenu((prev) => !prev)}
-                >
-                    <Dots color="#828387" />
+                <div className="post_header_right_menu">
+                    <div
+                        className="post_header_right hover2"
+                        onClick={() => setShowMenu((prev) => !prev)}
+                    >
+                        <Dots color="#828387" />
+                    </div>
+                    <div className="post_header_right hover2">
+                        <i className="exit_icon"></i>
+                    </div>
                 </div>
             </div>
 

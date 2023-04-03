@@ -33,25 +33,36 @@
     margin: 16px 0;
 }
 
-.rt-timeline li:nth-child(3) {
-    margin-top: 180px;
-}
-
-.rt-label {
-    background: var(--blue-color);
-}
-
 .rt-event {
     margin: 0 0 48px;
 }
 
-.rt-event .rt-svg-container .rt-arrow,
+
+.rt-timeline li:nth-child(3) {
+    margin-top: 180px;
+}
+
+.rt-timeline li:nth-last-child(3) {
+    margin-bottom: 0;
+}
+
+.rt-event:nth-of-type(2n) .rt-svg-container .rt-arrow {
+    left: auto;
+    right: -6%;
+}
+
+.rt-event .rt-svg-container .rt-arrow {
+    left: -6%;
+    /* color: var(--dark-color-secondary); */
+    color: var(--blue-color);
+}
+
 .rt-event .rt-dot {
     color: var(--blue-color);
 }
 
-.rt-header-container {
-    padding: 0;
+.rt-label {
+    background: var(--blue-color);
 }
 
 .rt-image {
@@ -62,6 +73,88 @@
 .rt-text-container,
 .rt-footer-container {
     padding: 0;
+}
+
+/* v__header */
+.rt-header-container {
+    padding: 0;
+}
+
+.v__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: var(--bg-primary);
+}
+
+.v__header_avatar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.v__header_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.v__header_content {
+    margin-bottom: 2px;
+}
+
+.v__header_author {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    text-align: left;
+    color: var(--color-primary);
+    margin-bottom: 1px;
+}
+
+.v__header_privacy_date {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color-secondary);
+    column-gap: 5px;
+}
+
+.v__header_age {
+    background: var(--blue-color);
+    color: var(--bg-primary);
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.v__header_dots {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.v__post_popup {
+    position: fixed;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    background: var(--bg-primary);
+    box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
+        inset 0 0 0 1px var(--shadow-inset);
+    width: 600px;
+    min-height: 230px;
+    border-radius: 5px;
+}
+
+.v__post_popup .post {
+    width: 100%;
 }
 
 /* VertTimelinePosts */

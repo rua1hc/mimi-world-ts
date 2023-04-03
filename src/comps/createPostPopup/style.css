@@ -272,12 +272,17 @@
     font-size: 15px;
     padding: 0 8px;
     margin-bottom: 2px;
-  color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .addto_options {
     display: flex;
     gap: 2px;
+}
+
+.post_header_right_menu {
+    display: flex;
+    gap: 5px;
 }
 
 .post_header_right {
@@ -286,6 +291,7 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+    background: var(--bg-secondary);
     border-radius: 50%;
 }
 
@@ -371,7 +377,7 @@
     border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow-y: auto;
-  color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 /* .add_pics_wrap::-webkit-scrollbar {

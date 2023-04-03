@@ -34,6 +34,21 @@ export default function CreatePost({ user, setVisible, profile }) {
                     </div>
                 )}
             </div>
+
+            <div className="createPost_body">
+                <div className="createPost_icon hover1">
+                    <i className="lifeEvent_icon"></i>
+                    Timeline
+                </div>
+                <div className="createPost_icon hover1">
+                    <i className="lifeEvent_icon"></i>
+                    Default
+                </div>
+                <div className="createPost_icon hover1">
+                    <i className="lifeEvent_icon"></i>
+                    More
+                </div>
+            </div>
         </div>
     );
 }
