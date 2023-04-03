@@ -517,6 +517,10 @@
     border-radius: 10px;
 }
 
+.post_menu li:nth-child(3) {
+    margin-top: 0;
+}
+
 .post_menu_text {
     display: flex;
     flex-direction: column;

@@ -9,7 +9,7 @@ import { Dots, Public } from "../../svg";
 // import { comment, getReacts, reactPost } from "../../functions/createPost";
 import "./style.css";
 
-export default function Post({ post, user, profile }) {
+export default function Post({ post, user, profile, setPostIdPopup }) {
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [check, setCheck] = useState();
@@ -113,9 +113,11 @@ export default function Post({ post, user, profile }) {
                     >
                         <Dots color="#828387" />
                     </div>
-                    <div className="post_header_right hover2">
-                        <i className="exit_icon"></i>
-                    </div>
+                    {setPostIdPopup && (
+                        <div className="post_header_right hover2" onClick={() => setPostIdPopup("")}>
+                            <i className="exit_icon"></i>
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import Timeline from "react-image-timeline";
@@ -7,25 +7,26 @@ import { Dots } from "../../svg";
 // import { Public } from "../../svg";
 require("react-image-timeline/dist/timeline.css");
 
-export default function VertTimelinePosts({ posts, user }) {
-    const events = posts.map((post) => {
-        return {
-            date: post.created_at.toDate(),
-            text: "Default text..",
-            title: "Default title..",
-            buttonText: "Default Btn",
-            imageUrl: post.images?.[0] || post.background,
-            onClick: console.log,
-            extras: post,
-        };
-    });
+export default function VertTimelinePosts({ posts, setPostIdPopup }) {
+    const [events, setEvents] = useState([]);
 
-    const VertTextBody = () => {
-        return <div className="v__text_body"></div>;
-    };
+    useEffect(() => {
+        const l_events = posts.map((post) => {
+            return {
+                date: post.created_at.toDate(),
+                text: "Default text..",
+                title: "Default title..",
+                buttonText: "Default Btn",
+                imageUrl: post.images?.[0] || post.background,
+                onClick: console.log,
+                extras: post,
+            };
+        });
+        setEvents(l_events);
+    }, [posts]);
 
-    const VertFooter = () => {
-        return <div className="v__footer"></div>;
+    const handlePostPopup = (postId) => {
+        console.log("postId:", postId);
     };
 
     const VertHeader = (props) => {
@@ -45,28 +46,74 @@ export default function VertTimelinePosts({ posts, user }) {
                         </div>
                     </div>
                 </Link>
-                <div className="v__header_age" onClick={() => handleDefaultClick(post._id)}>
+                <div className="v__header_age" onClick={() => handlePostPopup(post._id)}>
                     {`${post.mi_age} tuổi ${post.mi_month} tháng`}
                 </div>
-                <div className="v__header_dots hover2" onClick={() => handlePostPopup(post)}>
+                <div className="v__header_dots hover2" onClick={() => setPostIdPopup(post._id)}>
                     <Dots color="#828387" />
                 </div>
             </div>
         );
     };
 
-    const handlePostPopup = (post) => {
-        console.log("post:", post);
+    const VertImageBody = (props) => {
+        const [idx, setIdx] = useState(0);
+
+        const { extras: post } = props.event;
+
+        const handleBack = () => {
+            const nextIdx = idx === 0 ? post.images.length - 1 : idx - 1;
+            setIdx(nextIdx);
+        };
+        const handleNext = () => {
+            const nextIdx = idx === post.images.length - 1 ? 0 : idx + 1;
+            setIdx(nextIdx);
+        };
+        const handleIndicator = (idx) => {
+            setIdx(idx);
+        };
+
+        return (
+            <div className="v__image_body">
+                <div className="v__image_back" onClick={handleBack}>
+                    &lt;
+                </div>
+                <div className="v__image_next" onClick={handleNext}>
+                    &gt;
+                </div>
+                <div className="v__image_indicators">
+                    {post.images.map((image, i) => (
+                        <div
+                            className={
+                                i === idx ? "v__image_indicator-active" : "v__image_indicator"
+                            }
+                            onClick={() => handleIndicator(i)}
+                            key={i}
+                        ></div>
+                    ))}
+                </div>
+                <img src={post.images[idx]} className="v__image" alt="" />
+            </div>
+        );
     };
 
-    const handleDefaultClick = (postId) => {
-        console.log("postId:", postId);
+    const VertTextBody = () => {
+        return <div className="v__text_body"></div>;
+    };
+
+    const VertFooter = () => {
+        return <div className="v__footer"></div>;
     };
 
     return (
         <Timeline
             events={events}
-            customComponents={{ header: VertHeader, textBody: VertTextBody, footer: VertFooter }}
+            customComponents={{
+                header: VertHeader,
+                imageBody: VertImageBody,
+                textBody: VertTextBody,
+                footer: VertFooter,
+            }}
             denseLayout
             reverseOrder
         />

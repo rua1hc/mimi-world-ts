@@ -100,7 +100,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
     return (
         <div className="create_comment_wrap">
             <div className="create_comment">
-                <img src={user?.photoURL} alt="" />
+                <img src={user?.photoURL || "../../../images/default_pic.png"} alt="" />
                 <div className="comment_input_wrap">
                     {picker && (
                         <div className="comment_emoji_picker">
