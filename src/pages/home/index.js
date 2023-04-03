@@ -15,6 +15,7 @@ import "./style.css";
 export default function Home({ setVisible, posts, loading }) {
     const { user } = useSelector((state) => ({ ...state }));
     const [height, setHeight] = useState();
+    const [isTimelineView, setIsTimelineView] = useState(true);
     const middle = useRef(null);
 
     useEffect(() => {
@@ -30,15 +31,23 @@ export default function Home({ setVisible, posts, loading }) {
             <div className="home_middle" ref={middle}>
                 <div className="home_middle__header">
                     <Stories user={user} />
-                    <CreatePost user={user} setVisible={setVisible} />
+                    <CreatePost
+                        user={user}
+                        setVisible={setVisible}
+                        setIsTimelineView={setIsTimelineView}
+                    />
                     <RightHome user={user} />
                 </div>
+
                 <div className="home_middle__content">
                     {/* {user.verified === false && <SendVerification user={user} />} */}
                     {user?.verified && <SendVerification user={user} />}
 
-                    <VertTimelinePosts posts={posts} />
-                    <DefaultModePost posts={posts} user={user} />
+                    {isTimelineView ? (
+                        <VertTimelinePosts posts={posts} />
+                    ) : (
+                        <DefaultModePost posts={posts} user={user} />
+                    )}
                 </div>
             </div>
         </div>

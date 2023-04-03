@@ -2,7 +2,7 @@ import { Feeling, LiveVideo, Photo } from "../../svg";
 // import UserMenu from "../header/userMenu";
 import "./style.css";
 
-export default function CreatePost({ user, setVisible, profile }) {
+export default function CreatePost({ user, setVisible, setIsTimelineView, profile }) {
     return (
         <div className="createPost">
             <div className="createPost_header">
@@ -36,11 +36,11 @@ export default function CreatePost({ user, setVisible, profile }) {
             </div>
 
             <div className="createPost_body">
-                <div className="createPost_icon hover1">
+                <div className="createPost_icon hover1" onClick={() => setIsTimelineView(true)}>
                     <i className="lifeEvent_icon"></i>
                     Timeline
                 </div>
-                <div className="createPost_icon hover1">
+                <div className="createPost_icon hover1" onClick={() => setIsTimelineView(false)}>
                     <i className="lifeEvent_icon"></i>
                     Default
                 </div>
