@@ -57,9 +57,14 @@ export default function VertTimelinePosts({ posts, setPostIdPopup }) {
     };
 
     const VertImageBody = (props) => {
+        const { extras: post } = props.event;
         const [idx, setIdx] = useState(0);
 
-        const { extras: post } = props.event;
+        // autoplay enable
+        // useEffect(() => {
+        //     const interval = setInterval(() => handleNext(), 3000);
+        //     return () => clearInterval(interval);
+        // }, [idx]);
 
         const handleBack = () => {
             const nextIdx = idx === 0 ? post.images.length - 1 : idx - 1;
@@ -82,7 +87,7 @@ export default function VertTimelinePosts({ posts, setPostIdPopup }) {
                     &gt;
                 </div>
                 <div className="v__image_indicators">
-                    {post.images.map((image, i) => (
+                    {post.images.map((_, i) => (
                         <div
                             className={
                                 i === idx ? "v__image_indicator-active" : "v__image_indicator"
