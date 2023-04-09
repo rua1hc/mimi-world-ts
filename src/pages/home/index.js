@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import HorizontalTimeline from "react-horizontal-timeline";
 
 import Stories from "../../comps/home/stories";
 import LeftHome from "../../comps/home/left";
@@ -10,6 +9,8 @@ import SendVerification from "../../comps/home/sendVerification";
 import Header from "../../comps/header";
 import PostPopup from "../../comps/postPopup";
 import CreatePost from "../../comps/createPost";
+
+import HorizontalTimeline from "../../comps/horizontalTimeline";
 
 import DefaultModePost from "./DefaultModePosts";
 import VertTimelinePosts from "./VertTimelinePosts";
@@ -26,16 +27,6 @@ export default function Home({ setVisible, posts, loading }) {
     // useEffect(() => {
     //     setHeight(middle.current.clientHeight);
     // }, [loading]);
-
-    const VALUES = [
-        "2008-06-01",
-        "2010-06-01",
-        "2013-06-01",
-        "2015-03-01",
-        "2019-01-01",
-        "2019-06-17",
-        "2019-08-01",
-    ];
 
     return (
         <div
@@ -59,22 +50,6 @@ export default function Home({ setVisible, posts, loading }) {
                 <div className="home_middle__content">
                     {/* {user.verified === false && <SendVerification user={user} />} */}
                     {user?.verified && <SendVerification user={user} />}
-
-                    {/* <div>
-                        <div style={{ width: "60%", height: "100px", margin: "0 auto" }}>
-                            <HorizontalTimeline
-                                index={0}
-                                indexClick={(index) => {
-                                    // this.setState({ value: index, previous: this.state.value });
-                                    console.log(index);
-                                }}
-                                values={VALUES}
-                            />
-                        </div>
-                        <div className="text-center">
-                            <div className="">children</div>
-                        </div>
-                    </div> */}
 
                     {postIdPopup && (
                         <PostPopup

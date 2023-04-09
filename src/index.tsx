@@ -1,4 +1,5 @@
 import React from "react";
+// import ReactDOM from "react-dom";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -16,9 +17,17 @@ import rootReducer from "./reducers";
 // const store = createStore(rootReducer, composeWithDevTools());
 const store = configureStore({ reducer: rootReducer });
 
-const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement
-);
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <Provider store={store}>
+//             <Router>
+//                 <App />
+//             </Router>
+//         </Provider>
+//     </React.StrictMode>,
+//     document.getElementById("root")
+// );
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
