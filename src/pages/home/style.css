@@ -25,6 +25,18 @@
     padding: 0 0 0 5px;
 }
 
+/* h__horizontal_timeline */
+.h__horizontal_timeline {
+    /* margin: 10px; */
+    padding-top: 16px;
+}
+
+/* .timeline-eventline {
+    background: dodgerblue;
+} */
+
+/* h__horizontal_timeline */
+
 
 /* VertTimelinePosts */
 
@@ -195,14 +207,15 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    border: 2px solid var(--bg-primary);
     cursor: pointer;
-    background: var(--blue-color);
+    /* background: var(--blue-color); */
     /* filter: invert(100%); */
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 .v__image_indicator-active {
-    opacity: 1;
+    background: var(--bg-primary);
 }
 
 .v__image {

@@ -72,14 +72,14 @@ const buttonStyles = {
 const TimelineButtons = (props) => {
     const buttonBackEnabled = Math.round(props.position) < 0;
     const buttonForwardEnabled = Math.round(props.position) > Math.round(props.maxPosition);
-    const baseStyles = [buttonStyles.link(props.styles)];
+    // const baseStyles = [buttonStyles.link(props.styles)];
 
     return (
         <ul className="buttons">
             <li
                 className={`button-back ${buttonBackEnabled ? "enabled" : "disabled"}`}
                 key={Constants.LEFT}
-                onClick={() => props.updateSlide(Constants.LEFT)}
+                onClick={() => props.updateSlide(Constants.LEFT, props)}
                 style={[
                     buttonStyles.link(props.styles),
                     buttonBackEnabled
@@ -93,7 +93,7 @@ const TimelineButtons = (props) => {
             <li
                 className={`button-forward ${buttonForwardEnabled ? "enabled" : "disabled"}`}
                 key={Constants.RIGHT}
-                onClick={() => props.updateSlide(Constants.RIGHT)}
+                onClick={() => props.updateSlide(Constants.RIGHT, props)}
                 style={[
                     buttonStyles.link(props.styles),
                     buttonForwardEnabled

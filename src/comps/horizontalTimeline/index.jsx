@@ -7,14 +7,21 @@ import dimensions from "react-dimensions";
 import EventsBar from "./EventsBar";
 // Helpers and constansts
 import Constants from "./constants";
-import { zip, daydiff, cummulativeSeperation } from "./helpers";
+import {
+    // zip,
+    // daydiff,
+    cummulativeSeperation,
+} from "./helpers";
 
 /**
  * Default method to convert a date to a string label
  * @param {string} date The string representation of a date
  * @return {string} The formatted date string
  */
-const defaultGetLabel = (date, index) => new Date(date).toDateString().substring(4);
+const defaultGetLabel = (dateStr, index) => {
+    let date = new Date(dateStr);
+    return date.toDateString().substring(4, 8) + date.getFullYear();
+};
 
 /*
  * This is the Horizontal Timeline. This component expects an array of dates
@@ -136,7 +143,7 @@ HorizontalTimeline.defaultProps = {
     styles: {
         outline: "#dfdfdf",
         background: "#f8f8f8",
-        foreground: "#7b9d6f",
+        foreground: "#1876f2",
     },
     fillingMotion: {
         stiffness: 150,

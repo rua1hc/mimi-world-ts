@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import TimelineDot from "./TimelineDot";
-import { cummulativeSeperation } from "./helpers";
+// import { cummulativeSeperation } from "./helpers";
 
 /**
  * The markup Information for all the events on the horizontal timeline.

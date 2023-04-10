@@ -116,6 +116,7 @@ export default function CreatePostPopup({ user, setVisible }) {
     };
 
     const calcMimiAge = (date) => {
+        // based on mimiBirthday = new Date(2020, 3, 22);
         let toFullYear = date.getMonth() - 3;
         let month = toFullYear < 0 ? 9 + date.getMonth() : toFullYear;
         let age = toFullYear < 0 ? date.getFullYear() - 2021 : date.getFullYear() - 2020;
