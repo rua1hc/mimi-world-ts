@@ -13,7 +13,8 @@ export default function VertTimelinePosts({ posts, setPostIdPopup }) {
     useEffect(() => {
         const l_events = posts.map((post) => {
             return {
-                date: post.created_at.toDate(),
+                // date: post.created_at?.toDate(),
+                date: post.mi_date?.toDate(),
                 text: "Default text..",
                 title: "Default title..",
                 buttonText: "Default Btn",
@@ -78,7 +79,14 @@ export default function VertTimelinePosts({ posts, setPostIdPopup }) {
             setIdx(idx);
         };
 
-        return (
+        return post.background ? (
+            <div
+                className="v__background_wrap"
+                style={{ backgroundImage: `url(${post.background})` }}
+            >
+                <div className="post_bg_text">{post.text}</div>
+            </div>
+        ) : (
             <div className="v__image_body">
                 <div className="v__image_back" onClick={handleBack}>
                     &lt;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 import Moment from "react-moment";
 import { Dots } from "../../svg";
@@ -21,15 +22,18 @@ export default function Comment({ postId, comment }) {
                 response = await fsDeleteComment(postId, comment);
                 if (response.status !== "OK") {
                     setError(`Cannot delete comment (${response})`);
-                }
+                    toast.error(response);
+                } else toast.success(`Comment deleted!`);
             } else {
                 setError(response);
+                toast.error("Deleting photos failed!");
             }
         } else {
             const response = await fsDeleteComment(postId, comment);
             if (response.status !== "OK") {
                 setError(`Cannot delete comment (${response})`);
-            }
+                toast.error(response);
+            } else toast.success(`Comment deleted!`);
         }
         setLoading(false);
     };

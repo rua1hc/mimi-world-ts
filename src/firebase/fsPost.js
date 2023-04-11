@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { firestore } from "./firebase-config";
 import { Timestamp, serverTimestamp } from "firebase/firestore";
-import { doc, addDoc, updateDoc, collection } from "firebase/firestore";
+import { doc, addDoc, updateDoc, collection, deleteDoc } from "firebase/firestore";
 import { arrayUnion, arrayRemove, onSnapshot, query, orderBy } from "firebase/firestore";
 
 const fsCollection = "posts";
@@ -42,13 +42,12 @@ export const fsGetPost = async (postId, user) => {
     }
 };
 
-export const fsAddPost = async (type, background, text, images, user, mimiDate) => {
+export const fsAddPost = async (background, text, images, user, mimiDate) => {
     try {
         await addDoc(collection(firestore, fsCollection), {
             user_id: user.uid,
             user_displayName: user.displayName,
             user_photoURL: user.photoURL,
-            type,
             background,
             text,
             images,
@@ -70,8 +69,10 @@ export const fsUpdatePost = async (postId, user) => {
     }
 };
 
-export const fsDeletePost = async (postId, user) => {
+export const fsDeletePost = async (postId) => {
     try {
+        await deleteDoc(doc(firestore, fsCollection, postId));
+        return { status: "OK" };
     } catch (ex) {
         return ex.message;
     }

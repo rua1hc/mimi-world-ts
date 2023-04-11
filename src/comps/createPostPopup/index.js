@@ -48,7 +48,7 @@ export default function CreatePostPopup({ user, setVisible }) {
         if (background) {
             setLoading(true);
             // const response = await createPost(null, background, text, null, user.id, user.token);
-            const response = await fsAddPost(null, background, text, null, user, mimiDate);
+            const response = await fsAddPost(background, text, null, user, mimiDate);
             setLoading(false);
             if (response.status === "OK") {
                 // dispatch({
@@ -81,7 +81,7 @@ export default function CreatePostPopup({ user, setVisible }) {
                 setError(imageUrls.NOT_OK);
                 toast.error("Uploading photos failed!");
             } else if (imageUrls.length > 0) {
-                let response = await fsAddPost(null, null, text, imageUrls, user, mimiDate);
+                let response = await fsAddPost(null, text, imageUrls, user, mimiDate);
                 setLoading(false);
                 if (response.status === "OK") {
                     // dispatch({

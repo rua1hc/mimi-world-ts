@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+
 import PostMenu from "./PostMenu";
 import ReactsPopup from "./ReactsPopup";
 import Comment from "./Comment";
 import CreateComment from "./CreateComment";
-import { Dots, Public } from "../../svg";
+
+import { fsDeletePost } from "../../firebase/fsPost";
+import { deletePostImages } from "../../cloudinary/deleteImages";
 // import { comment, getReacts, reactPost } from "../../functions/createPost";
+import { Dots, Public } from "../../svg";
 import "./style.css";
 
 export default function Post({ post, user, profile, setPostIdPopup }) {
@@ -85,7 +90,21 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
         }
     };
 
-    const handleDelete = () => {};
+    const handleDelete = async () => {
+        console.log("post._id", post._id);
+        console.log("post.images", post.images);
+
+        toast.info("Deleting photos...");
+        let result = await deletePostImages(post.images);
+        if (result.status === "OK") {
+            result = await fsDeletePost(post._id);
+            if (result.status === "OK") {
+                toast.success(`${user.displayName} đã xóa 1 bài viết!`);
+            } else toast.error(result);
+        } else toast.error(result);
+
+        setPostIdPopup("");
+    };
 
     return (
         <div className="post" style={{ width: `${profile && "100%"}` }} ref={postRef}>

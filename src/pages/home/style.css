@@ -155,6 +155,17 @@
 }
 
 /* v__header */
+/* v__background_wrap */
+.v__background_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    aspect-ratio: 2/1;
+    padding: 0 10px;
+}
 
 /* v__image_body */
 .v__image_body {

@@ -68,7 +68,7 @@ function App() {
 
     return (
         <div className={darkTheme ? "dark" : ""}>
-            <ToastContainer theme="colored" />
+            <ToastContainer position="bottom-right" theme="colored" />
 
             {visible && <CreatePostPopup user={user} setVisible={setVisible} />}
 
