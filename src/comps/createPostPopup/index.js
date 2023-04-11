@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 // import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -70,6 +71,7 @@ export default function CreatePostPopup({ user, setVisible }) {
             // const imageUrls = await uploadImages(formData, path, user.token);
             // const response = await createPost(null, null, text, imageUrls, user.id, user.token);
 
+            toast.info("Uploading photos...");
             const imageUrls = await uploadPostImages(
                 images,
                 `${mimiDate.age} age, ${mimiDate.month} month, ${user.displayName}`
@@ -77,6 +79,7 @@ export default function CreatePostPopup({ user, setVisible }) {
             if (imageUrls.NOT_OK) {
                 setLoading(false);
                 setError(imageUrls.NOT_OK);
+                toast.error("Uploading photos failed!");
             } else if (imageUrls.length > 0) {
                 let response = await fsAddPost(null, null, text, imageUrls, user, mimiDate);
                 setLoading(false);
@@ -88,8 +91,10 @@ export default function CreatePostPopup({ user, setVisible }) {
                     setText("");
                     setImages("");
                     setVisible(false);
+                    toast.success(`${user.displayName} mới vẽ bậy lên tường!`);
                 } else {
                     setError(response);
+                    toast.error(response);
                 }
             } else {
                 console.log("do nothing");

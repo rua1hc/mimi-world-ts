@@ -90,7 +90,7 @@ function EventsBar(props) {
                 props.totalWidth
             );
         }
-    }, [position, props.events, props.index, props.visibleWidth, props.totalWidth]);
+    }, []);
 
     const handleKeydown = (event) => {
         if (props.isKeyboardEnabled) {

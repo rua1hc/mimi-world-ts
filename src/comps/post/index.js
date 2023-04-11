@@ -33,6 +33,7 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
     const showMore = () => {
         setCount((prev) => prev + 3);
     };
+
     const getPostReacts = async () => {
         // const res = await getReacts(post._id, user.token);
         const res = {
@@ -56,7 +57,6 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
 
     const reactHandler = async (type) => {
         // reactPost(post._id, type, user.token);
-
         let nextReacts = [...reacts];
         if (check === type) {
             setCheck(null);
@@ -84,6 +84,8 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
             setReacts(nextReacts);
         }
     };
+
+    const handleDelete = () => {};
 
     return (
         <div className="post" style={{ width: `${profile && "100%"}` }} ref={postRef}>
@@ -276,14 +278,15 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
                 <PostMenu
                     userId={user.uid}
                     postUserId={post.user_id}
-                    postId={post._id}
+                    // postId={post._id}
                     images={post.images}
                     // imagesLength={post.images?.length}
                     setShowMenu={setShowMenu}
                     // token={user.token}
+                    postRef={postRef}
                     checkSaved={checkSaved}
                     setCheckSaved={setCheckSaved}
-                    postRef={postRef}
+                    handleDelete={handleDelete}
                 />
             )}
         </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import Picker from "emoji-picker-react";
 // import dataURItoBlob from "../../helpers/dataURItoBlob";
 // import { comment } from "../../functions/createPost";
@@ -69,12 +70,14 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
                 // const comments = await comment(postId, text, imgComment[0].url, user.token);
                 // setComments(comments);
 
+                toast.info("Uploading photos...");
                 const imageUrls = await uploadCommentImages(
                     commentImage,
                     `comment, ${user.displayName}`
                 );
                 if (imageUrls.NOT_OK) {
                     response = imageUrls.NOT_OK;
+                    toast.error("Uploading photos failed!");
                 } else if (imageUrls.length === 1) {
                     response = await fsAddComment(postId, text, imageUrls[0], user);
                 } else {
@@ -91,6 +94,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
                 setCount((prev) => ++prev);
                 setText("");
                 setCommentImage("");
+                toast.success(`${user.displayName} vừa nói xàm trên bài!`);
             } else {
                 setError(response);
             }

@@ -7,7 +7,7 @@ import { arrayUnion, arrayRemove, onSnapshot, query, orderBy } from "firebase/fi
 const fsCollection = "posts";
 
 // REF_NOT_TESTED
-function usePostsCollection() {
+export function usePostsCollection() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
