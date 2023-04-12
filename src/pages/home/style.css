@@ -586,6 +586,11 @@
         width: 100%;
     }
 
+    .createPost_body_wrap {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
     .createPost_body {
         grid-template: repeat(3, 1fr)/repeat(1, 1fr);
     }

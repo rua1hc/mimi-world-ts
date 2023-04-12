@@ -146,7 +146,18 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
                 <div className="post_bg" style={{ backgroundImage: `url(${post.background})` }}>
                     <div className="post_bg_text">{post.text}</div>
                 </div>
-            ) : post.type === null ? (
+            ) : post.type === "coverPicture" ? (
+                <div className="post_cover_wrap">
+                    <img src={post.images[0].url} alt="" />
+                </div>
+            ) : post.type === "profilePicture" ? (
+                <div className="post_profile_wrap">
+                    <div className="post_updated_bg">
+                        <img src={post.user.cover} alt="" />
+                    </div>
+                    <img src={post.images[0].url} alt="" className="post_updated_picture" />
+                </div>
+            ) : (
                 <>
                     <div className="post_text">{post.text}</div>
                     {post.images?.length && (
@@ -172,17 +183,6 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
                         </div>
                     )}
                 </>
-            ) : post.type === "profilePicture" ? (
-                <div className="post_profile_wrap">
-                    <div className="post_updated_bg">
-                        <img src={post.user.cover} alt="" />
-                    </div>
-                    <img src={post.images[0].url} alt="" className="post_updated_picture" />
-                </div>
-            ) : (
-                <div className="post_cover_wrap">
-                    <img src={post.images[0].url} alt="" />
-                </div>
             )}
 
             <div className="post_infos">
@@ -295,7 +295,7 @@ export default function Post({ post, user, profile, setPostIdPopup }) {
 
             {showMenu && (
                 <PostMenu
-                    userId={user.uid}
+                    userId={user?.uid}
                     postUserId={post.user_id}
                     // postId={post._id}
                     images={post.images}
