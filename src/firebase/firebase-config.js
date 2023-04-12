@@ -10,12 +10,12 @@ import { getFirestore } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
-    authDomain: "mimi-book.firebaseapp.com",
-    projectId: "mimi-book",
-    storageBucket: "mimi-book.appspot.com",
-    messagingSenderId: "51881563705",
-    appId: "1:51881563705:web:7b774e0617c01118301fe8",
-    measurementId: "G-75S6SWD933",
+    authDomain: "mimitauhai.firebaseapp.com",
+    projectId: "mimitauhai",
+    storageBucket: "mimitauhai.appspot.com",
+    messagingSenderId: "91378995923",
+    appId: "1:91378995923:web:1f38992a33ff8802093a26",
+    measurementId: "G-XJP5HQ9KM1",
 };
 
 // Initialize Firebase
