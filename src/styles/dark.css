@@ -160,3 +160,19 @@
 }
 
 /* postBox */
+
+/* v__header_age */
+.dark .rt-backing {
+    background: transparent;
+}
+
+.dark .v__header_age {
+    color: #fff;
+}
+
+.dark .v__image_back,
+.dark .v__image_next {
+    color: #fff;
+}
+
+/* v__header_age */

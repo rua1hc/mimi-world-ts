@@ -41,12 +41,7 @@ export default function Reset() {
                         <Link to="/profile">
                             <img src={user.photoURL} alt="" />
                         </Link>
-                        <button
-                            className="blue_btn"
-                            onClick={() => {
-                                logout();
-                            }}
-                        >
+                        <button className="blue_btn" onClick={() => logout()}>
                             Logout
                         </button>
                     </div>
@@ -71,10 +66,10 @@ export default function Reset() {
                 {visible === 1 && userInfos && (
                     <SendEmail
                         email={email}
-                        userInfos={userInfos}
                         error={error}
                         setError={setError}
                         setLoading={setLoading}
+                        userInfos={userInfos}
                         setUserInfos={setUserInfos}
                         setVisible={setVisible}
                     />
@@ -86,9 +81,10 @@ export default function Reset() {
                         setCode={setCode}
                         error={error}
                         setError={setError}
+                        loading={loading}
                         setLoading={setLoading}
-                        setVisible={setVisible}
                         userInfos={userInfos}
+                        setVisible={setVisible}
                     />
                 )}
                 {visible === 3 && (

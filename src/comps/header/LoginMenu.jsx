@@ -164,19 +164,19 @@ export default function LoginMenu({ user, setShowLoginMenu }) {
                         <span>💩</span>
                     </li>
                     <li>
-                        <span>Add new post</span>
+                        <span>Add post</span>
                         <span>💩</span>
                     </li>
                     <li>
-                        <span>Edit a post</span>
+                        <span>Edit post</span>
                         <span>💩</span>
                     </li>
                     <li>
-                        <span>Delete a post</span>
+                        <span>Delete post</span>
                         <span>💩</span>
                     </li>
                     <li>
-                        <span>Comment a post</span>
+                        <span>Comment post</span>
                         <span>💩</span>
                     </li>
                 </ul>

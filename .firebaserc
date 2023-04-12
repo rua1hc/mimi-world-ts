@@ -1,5 +1,7 @@
 {
-    "projects": {
-        "default": "mimi-book"
-    }
+  "projects": {
+    "default": "mimitauhai"
+  },
+  "targets": {},
+  "etags": {}
 }

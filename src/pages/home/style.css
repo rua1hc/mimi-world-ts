@@ -25,6 +25,18 @@
     padding: 0 0 0 5px;
 }
 
+/* h__horizontal_timeline */
+.h__horizontal_timeline {
+    /* margin: 10px; */
+    padding-top: 16px;
+}
+
+/* .timeline-eventline {
+    background: dodgerblue;
+} */
+
+/* h__horizontal_timeline */
+
 
 /* VertTimelinePosts */
 
@@ -33,25 +45,36 @@
     margin: 16px 0;
 }
 
-.rt-timeline li:nth-child(3) {
-    margin-top: 180px;
-}
-
-.rt-label {
-    background: var(--blue-color);
-}
-
 .rt-event {
     margin: 0 0 48px;
 }
 
-.rt-event .rt-svg-container .rt-arrow,
-.rt-event .rt-dot {
-    color: var(--blue-color);
+
+.rt-timeline li:nth-child(3) {
+    margin-top: 180px;
 }
 
-.rt-header-container {
-    padding: 0;
+.rt-timeline li:nth-last-child(3) {
+    margin-bottom: 0;
+}
+
+.rt-event:nth-of-type(2n) .rt-svg-container .rt-arrow {
+    left: auto;
+    right: -6%;
+}
+
+.rt-event .rt-svg-container .rt-arrow {
+    left: -6%;
+    /* color: var(--dark-color-secondary); */
+    color: dodgerblue;
+}
+
+.rt-event .rt-dot {
+    color: dodgerblue;
+}
+
+.rt-label {
+    background: var(--blue-color);
 }
 
 .rt-image {
@@ -62,6 +85,201 @@
 .rt-text-container,
 .rt-footer-container {
     padding: 0;
+}
+
+/* v__header */
+.rt-header-container {
+    padding: 0;
+}
+
+.v__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: var(--bg-primary);
+}
+
+.v__header_avatar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.v__header_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.v__header_content {
+    margin-bottom: 2px;
+}
+
+.v__header_author {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    text-align: left;
+    color: var(--color-primary);
+    margin-bottom: 1px;
+}
+
+.v__header_privacy_date {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color-secondary);
+    column-gap: 5px;
+}
+
+.v__header_age {
+    /* background: var(--blue-color); */
+    background: dodgerblue;
+    color: var(--bg-primary);
+    border-radius: 20px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.v__header_dots {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* v__header */
+/* v__background_wrap */
+.v__background_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+    aspect-ratio: 2/1;
+    padding: 0 10px;
+}
+
+/* v__image_body */
+.v__image_body {
+    position: relative;
+    display: flex;
+}
+
+.v__image_body:hover .v__image_back,
+.v__image_body:hover .v__image_next {
+    opacity: 0.7;
+}
+
+.v__image_back,
+.v__image_next {
+    position: absolute;
+    top: 45%;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    opacity: 0;
+    background: var(--bg-third);
+    filter: invert(100%);
+}
+
+.v__image_back {
+    left: 8px;
+}
+
+.v__image_next {
+    right: 8px;
+}
+
+.v__image_indicators {
+    position: absolute;
+    /* bottom: 0; */
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.v__image_indicator,
+.v__image_indicator-active {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-primary);
+    cursor: pointer;
+    /* background: var(--blue-color); */
+    /* filter: invert(100%); */
+    /* opacity: 0.5; */
+}
+
+.v__image_indicator-active {
+    background: var(--bg-primary);
+}
+
+.v__image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    /* overflow: inherit; */
+}
+
+/* v__image_body */
+
+/* v__text_body && v__footer */
+/* .v__text_body,
+.v__footer {
+    display: none;
+} */
+
+/**
+ * ----------------------------------------
+ * Animista animation fade-in-fwd
+ * ----------------------------------------
+ */
+.fade-in-fwd {
+    -webkit-animation: fade-in-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite both;
+    animation: fade-in-fwd 3s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite both;
+}
+
+@-webkit-keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
 }
 
 /* VertTimelinePosts */
@@ -228,6 +446,9 @@
     /* .right_home {
         display: none;
     } */
+    .v__header_content {
+        display: none;
+    }
 }
 
 /* query806px */
@@ -274,6 +495,17 @@
     }
 }
 
+@media (max-width: 680px) {
+    .v__header {
+        justify-content: center;
+    }
+
+    .v__header_avatar,
+    .v__header_dots {
+        display: none;
+    }
+}
+
 @media (max-width: 620px) {
     .home_middle {
         /* position: absolute; */
@@ -315,6 +547,28 @@
     .createPost_icon svg {
         width: 20px;
     }
+
+    .v__header {
+        justify-content: space-between;
+    }
+
+    .v__header_avatar {
+        display: flex;
+    }
+
+    .v__header_dots {
+        display: grid;
+    }
+
+    .v__header_dots>svg {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .v__header_content {
+        display: block;
+    }
 }
 
 @media (max-width: 400px) {
@@ -346,6 +600,15 @@
         margin: 0 auto;
     }
 
+    .v__header {
+        justify-content: center;
+    }
+
+    .v__header_avatar,
+    .v__header_content,
+    .v__header_dots {
+        display: none;
+    }
 }
 
 /*-----Activate popup----*/

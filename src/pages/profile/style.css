@@ -69,7 +69,7 @@
     border-radius: 10px;
     box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
         inset 0 0 0 px var(--shadow-inset);
-    z-index: 99999;
+    z-index: 9999;
 }
 
 .open_cover_menu_item {
@@ -90,7 +90,7 @@
     justify-content: space-between;
     padding: 0 1rem;
     margin-bottom: -2.8rem;
-  z-index: 1;
+    z-index: 1;
 }
 
 .profile_w_left {
@@ -435,16 +435,18 @@
     object-fit: cover;
     width: 100%;
 }
+
 .friends_menu_wrap {
-  position: relative;
+    position: relative;
 }
+
 .cover_crooper .reactEasyCrop_Container {
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
 }
 
 .save_changes_cover {
-    z-index: 999999999;
+    z-index: 999999;
     position: fixed;
     left: 0;
     display: flex;
@@ -491,7 +493,8 @@
 .selectCoverBox {
     width: 570px !important;
     max-width: 80vw;
-    height: 550px;
+    height: 530px;
+    top: 53%;
 }
 
 .selectCoverBox_links {
@@ -578,9 +581,10 @@
         justify-content: center;
         transform: translateY(-10px);
     }
-  .fix1 {
-    transform: translate(1.2rem, -10px);
-  }
+
+    .fix1 {
+        transform: translate(1.2rem, -10px);
+    }
 }
 
 @media (max-width: 650px) {
@@ -641,16 +645,19 @@
         transform: translateX(-2rem);
     }
 }
+
 .fix {
-  flex-direction: row !important;
+    flex-direction: row !important;
 }
+
 .react-loading-skeleton {
-  --base-color: #ccc !important;
-  --highlight-color: #ddd !important;
+    --base-color: #ccc !important;
+    --highlight-color: #ddd !important;
 }
+
 .sekelton_loader {
-  height: 100px;
-  width: 100%;
-  display: grid;
-  place-items: center;
+    height: 100px;
+    width: 100%;
+    display: grid;
+    place-items: center;
 }

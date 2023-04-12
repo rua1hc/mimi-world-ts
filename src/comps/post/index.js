@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+
 import PostMenu from "./PostMenu";
 import ReactsPopup from "./ReactsPopup";
 import Comment from "./Comment";
 import CreateComment from "./CreateComment";
-import { Dots, Public } from "../../svg";
+
+import { fsDeletePost } from "../../firebase/fsPost";
+import { deletePostImages } from "../../cloudinary/deleteImages";
 // import { comment, getReacts, reactPost } from "../../functions/createPost";
+import { Dots, Public } from "../../svg";
 import "./style.css";
 
-export default function Post({ post, user, profile }) {
+export default function Post({ post, user, profile, setPostIdPopup }) {
     const [visible, setVisible] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [check, setCheck] = useState();
@@ -33,6 +38,7 @@ export default function Post({ post, user, profile }) {
     const showMore = () => {
         setCount((prev) => prev + 3);
     };
+
     const getPostReacts = async () => {
         // const res = await getReacts(post._id, user.token);
         const res = {
@@ -56,7 +62,6 @@ export default function Post({ post, user, profile }) {
 
     const reactHandler = async (type) => {
         // reactPost(post._id, type, user.token);
-
         let nextReacts = [...reacts];
         if (check === type) {
             setCheck(null);
@@ -85,6 +90,22 @@ export default function Post({ post, user, profile }) {
         }
     };
 
+    const handleDelete = async () => {
+        console.log("post._id", post._id);
+        console.log("post.images", post.images);
+
+        toast.info("Deleting photos...");
+        let result = await deletePostImages(post.images);
+        if (result.status === "OK") {
+            result = await fsDeletePost(post._id);
+            if (result.status === "OK") {
+                toast.success(`${user.displayName} đã xóa 1 bài viết!`);
+            } else toast.error(result);
+        } else toast.error(result);
+
+        setPostIdPopup("");
+    };
+
     return (
         <div className="post" style={{ width: `${profile && "100%"}` }} ref={postRef}>
             <div className="post_header">
@@ -106,11 +127,18 @@ export default function Post({ post, user, profile }) {
                         </div>
                     </div>
                 </Link>
-                <div
-                    className="post_header_right hover1"
-                    onClick={() => setShowMenu((prev) => !prev)}
-                >
-                    <Dots color="#828387" />
+                <div className="post_header_right_menu">
+                    <div
+                        className="post_header_right hover2"
+                        onClick={() => setShowMenu((prev) => !prev)}
+                    >
+                        <Dots color="#828387" />
+                    </div>
+                    {setPostIdPopup && (
+                        <div className="post_header_right hover2" onClick={() => setPostIdPopup("")}>
+                            <i className="exit_icon"></i>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -269,14 +297,15 @@ export default function Post({ post, user, profile }) {
                 <PostMenu
                     userId={user.uid}
                     postUserId={post.user_id}
-                    postId={post._id}
+                    // postId={post._id}
                     images={post.images}
                     // imagesLength={post.images?.length}
                     setShowMenu={setShowMenu}
                     // token={user.token}
+                    postRef={postRef}
                     checkSaved={checkSaved}
                     setCheckSaved={setCheckSaved}
-                    postRef={postRef}
+                    handleDelete={handleDelete}
                 />
             )}
         </div>

@@ -149,7 +149,7 @@ code {
 }
 
 
-/* hover */
+/* hover3 > hover1 > hover2 > hover9 > darker */
 .hover1:hover {
     background: var(--bg-secondary);
 }

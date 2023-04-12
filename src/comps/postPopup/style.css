@@ -1,0 +1,12 @@
+.post__popup {
+    height: 96vh;
+    margin: 2vh auto;
+}
+
+.post__popup .post {
+    max-width: 700px;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
+        inset 0 0 0 1px var(--shadow-inset);
+}

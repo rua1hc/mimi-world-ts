@@ -7,14 +7,15 @@ import useOnClickOutside from "../../helpers/clickOutside";
 export default function PostMenu({
     userId,
     postUserId,
-    postId,
+    // postId,
     images,
     // imagesLength,
     setShowMenu,
     //   token,
+    postRef,
     checkSaved,
     setCheckSaved,
-    postRef,
+    handleDelete,
 }) {
     const menu = useRef(null);
     // const [test, setTest] = useState(postUserId === userId ? true : false);
@@ -38,7 +39,7 @@ export default function PostMenu({
         });
     };
 
-    const deleteHandler = async () => {
+    const archiveHandler = async () => {
         // const res = await deletePost(postId, token);
         const res = { status: "NOT_OK" };
         if (res.status === "ok") {
@@ -91,9 +92,13 @@ export default function PostMenu({
             {test && <MenuItem icon="delete_icon" title="Turn off translations" />}
             {test && <MenuItem icon="date_icon" title="Edit Date" />}
             {test && <MenuItem icon="refresh_icon" title="Refresh share attachment" />}
-            {test && <MenuItem icon="archive_icon" title="Move to archive" />}
             {test && (
-                <div onClick={() => deleteHandler()}>
+                <div onClick={archiveHandler}>
+                    <MenuItem icon="archive_icon" title="Move to archive" />
+                </div>
+            )}
+            {test && (
+                <div onClick={handleDelete}>
                     <MenuItem
                         icon="trash_icon"
                         title="Move to trash"
@@ -101,7 +106,6 @@ export default function PostMenu({
                     />
                 </div>
             )}
-
             {!test && <div className="line"></div>}
             {!test && (
                 <MenuItem
